@@ -1,4 +1,4 @@
-﻿# ADM-MANAGER-DANKELTHAHER
+﻿# GOLDEN-ADM-MANAGER
 
 **Manager Script Repositorio**
 
@@ -8,4 +8,4 @@
 
 ## Installation
 
-wget https://raw.githubusercontent.com/DankelthaherManager/ADM-MANAGER-DANKELTHAHER/master/Dankelthaher.sh; chmod 777 Dankelthaher.sh* && ./Dankelthaher.sh*
+wget https://raw.githubusercontent.com/GoldenADMPRO/GOLDEN-ADM-MANAGER/master/goldenvps.sh; chmod 777 goldenvps.sh* && ./goldenvps.sh*
