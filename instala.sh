@@ -1,28 +1,19 @@
 #!/bin/bash
-apt-get install lsof
-apt-get install sudo
-echo - e "&lt;span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce_SELRES_start"&gt;&lt;/span&gt;root ALL=(ALL) ALL" >> /etc/sudoers
-apt-get install figlet -y
-apt-get install cowsay -y
-echo -e ""
-apt-get install lolcat -y
 cd $HOME
 SCPdir="/etc/newadm"
 SCPinstal="$HOME/install"
 SCPidioma="${SCPdir}/idioma"
 SCPusr="${SCPdir}/ger-user"
 SCPfrm="/etc/ger-frm"
-SCPfrm3="/etc/adm-lite"
 SCPinst="/etc/ger-inst"
-rm $HOME/Dankelthaher.sh
-SCPresq="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0RhbmtlbHRoYWhlck1hbmFnZXIvQURNLU1BTkFHRVItREFOS0VMVEhBSEVSL21hc3Rlci9yZXF1ZXN0"
+SCPresq="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0dvbGRlbkFETVBSTy9HT0xERU4tQURNLU1BTkFHRVIvbWFzdGVyL2dvbGRlbnZwcy5zaA=="
 SUB_DOM='base64 -d'
 [[ $(dpkg --get-selections|grep -w "gawk"|head -1) ]] || apt-get install gawk -y &>/dev/null
 [[ $(dpkg --get-selections|grep -w "mlocate"|head -1) ]] || apt-get install mlocate -y &>/dev/null
 rm $(pwd)/$0 &> /dev/null
 msg () {
-BRAN='\033[1;37m' && VERMELHO='\e[31m' && VERDE='\e[32m' && AMARELO='\e[33m'
-AZUL='\e[34m' && MAGENTA='\e[35m' && MAG='\033[1;36m' &&NEGRITO='\e[1m' && SEMCOR='\e[0m'
+BRAN='\033[93m' && VERMELHO='\e[93m' && VERDE='\e[93m' && AMARELO='\e[93m'
+AZUL='\e[93m' && MAGENTA='\e[93m' && MAG='\033[93m' &&NEGRITO='\e[1m' && SEMCOR='\e[0m'
  case $1 in
   -ne)cor="${VERMELHO}${NEGRITO}" && echo -ne "${cor}${2}${SEMCOR}";;
   -ama)cor="${AMARELO}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
@@ -30,8 +21,8 @@ AZUL='\e[34m' && MAGENTA='\e[35m' && MAG='\033[1;36m' &&NEGRITO='\e[1m' && SEMCO
   -azu)cor="${MAG}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -verd)cor="${VERDE}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -bra)cor="${BRAN}${NEGRITO}" && echo -ne "${cor}${2}${SEMCOR}";;
-  -bar2)cor="\e[0;31m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\e[0m" && echo -e "${cor}${SEMCOR}";;
-  -bar)cor="${AZUL}${NEGRITO}========================================" && echo -e "${cor}${SEMCOR}";;
+  -bar2)cor="${AZUL}${NEGRITO}=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=" && echo -e "${cor}${SEMCOR}";;
+  -bar)cor="${AZUL}${NEGRITO}=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=%=" && echo -e "${cor}${SEMCOR}";;
  esac
 }
 fun_ip () {
@@ -43,7 +34,7 @@ inst_components () {
 [[ $(dpkg --get-selections|grep -w "nano"|head -1) ]] || apt-get install nano -y &>/dev/null
 [[ $(dpkg --get-selections|grep -w "bc"|head -1) ]] || apt-get install bc -y &>/dev/null
 [[ $(dpkg --get-selections|grep -w "screen"|head -1) ]] || apt-get install screen -y &>/dev/null
-[[ $(dpkg --get-selections|grep -w "python"|head -1) ]] || apt-get install python -y &>/dev/null
+[[ $(dpkg --get-selections|grep -w "python"|head -1) ]] ||sudo apt-get install python -y &>/dev/null
 [[ $(dpkg --get-selections|grep -w "python3"|head -1) ]] || apt-get install python3 -y &>/dev/null
 [[ $(dpkg --get-selections|grep -w "curl"|head -1) ]] || apt-get install curl -y &>/dev/null
 [[ $(dpkg --get-selections|grep -w "ufw"|head -1) ]] || apt-get install ufw -y &>/dev/null
@@ -56,15 +47,8 @@ inst_components () {
  }
 }
 funcao_idioma () {
- echo -e " "
 msg -bar2
-cowsay -f eyes "BIENVENIDO Y GRACIAS POR UTILIZAR NEW-ADM OFICIAL BY DANKELTHAHER" | lolcat
-figlet ..dankelthaher.. | lolcat
- echo -e " "
-msg -bar2
-echo -e "\e[1;33mSelecione Un Idioma\e[0m"
-msg -bar2
-declare -A idioma=( [1]="en \e[0;37mIngles \e[0m "  [2]="fr \e[0;37mFrances \e[0m "  [3]="de \e[0;37mAleman \e[0m "  [4]="it \e[0;37mItaliano \e[0m "  [5]="pl \e[0;37mPolaco \e[0m "  [6]="pt \e[0;37mPortugues \e[0m "  [7]="es \e[0;37mEspanol \e[0m "  [8]="tr \e[0;37mTurko \e[0m " )
+declare -A idioma=( [1]="en English" [2]="fr Franch" [3]="de German" [4]="it Italian" [5]="pl Polish" [6]="pt Portuguese" [7]="es Spanish" [8]="tr Turkish" )
 for ((i=1; i<=12; i++)); do
 valor1="$(echo ${idioma[$i]}|cut -d' ' -f2)"
 [[ -z $valor1 ]] && break
@@ -99,7 +83,7 @@ done
 msg -bar2
 unset selection
 while [[ ${selection} != @([1-8]) ]]; do
-echo -ne "\033[1;37mSELECIONE: " && read selection
+echo -ne "\033[1;37mSELECIONA EL IDIOMA: " && read selection
 tput cuu1 && tput dl1
 done
 pv="$(echo ${idioma[$selection]}|cut -d' ' -f1)"
@@ -107,12 +91,10 @@ pv="$(echo ${idioma[$selection]}|cut -d' ' -f1)"
 byinst="true"
 }
 install_fim () {
-msg -ama "$(source trans -b es:${id} "Instalación completa, utilice los comandos"|sed -e 's/[^a-z -]//ig')" && msg bar2
-echo -e " menu / adm" && msg -verm "$(source trans -b pt:${id} "Reinicie su servidor para completar la instalación"|sed -e 's/[^a-z -]//ig')"
-mkdir /etc/crondbl  > /dev/null 2>&1 
-mkdir /etc/rom  > /dev/null 2>&1
-mkdir /etc/bin  > /dev/null 2>&1
-mkdir /etc/nanobc  > /dev/null 2>&1
+msg -ama "$(source trans -b es:${id} "INSTALACION CON EXITO, 
+PARA ABRIR EL SCRIPT, ESCRIBA"|sed -e 's/[^a-z -]//ig')" && msg bar2
+echo -e " adm / oro" && msg -verm "$(source trans -b es:${id} "
+REINICIE SU VPS CON EL COMANDO reboot PARA COMPLETAR LA INSTALACION"|sed -e 's/[^a-z -]//ig')"
 msg -bar2
 }
 ofus () {
@@ -141,28 +123,16 @@ verificar_arq () {
 [[ ! -d ${SCPusr} ]] && mkdir ${SCPusr}
 [[ ! -d ${SCPfrm} ]] && mkdir ${SCPfrm}
 [[ ! -d ${SCPinst} ]] && mkdir ${SCPinst}
-[[ ! -d ${SCPfrm3} ]] && mkdir ${SCPfrm3}
 case $1 in
 "menu"|"message.txt")ARQ="${SCPdir}/";; #Menu
-"dados.zip")ARQ="${SCPfrm3}/";; #painel
-"painel.zip")ARQ="${SCPfrm3}/";; #painel
 "usercodes")ARQ="${SCPusr}/";; #User
 "openssh.sh")ARQ="${SCPinst}/";; #Instalacao
 "squid.sh")ARQ="${SCPinst}/";; #Instalacao
 "dropbear.sh")ARQ="${SCPinst}/";; #Instalacao
 "openvpn.sh")ARQ="${SCPinst}/";; #Instalacao
 "ssl.sh")ARQ="${SCPinst}/";; #Instalacao
-"ssld.sh")ARQ="${SCPinst}/";; #Instalacao
-"sslmanager.sh")ARQ="${SCPinst}/";; #Instalacao
-"errormanager.sh")ARQ="${SCPinst}/";; #Instalacao
-"shadown.sh")ARQ="${SCPinst}/";; #Instalacao
-"shadowsock.sh")ARQ="${SCPinst}/";; #Instalacao
 "shadowsocks.sh")ARQ="${SCPinst}/";; #Instalacao
-"shadown.sh")ARQ="${SCPinst}/";; #Instalacao
-"ssrrmu.sh")ARQ="${SCPinst}/";; #Instalacao
-"shadowsocks.sh")ARQ="${SCPinst}/";; #Instalacao
-"v2ray.sh")ARQ="${SCPinst}/";; #Instalacao
-"vdoray.sh")ARQ="${SCPinst}/";; #Instalacao
+"USUARIO-DEMO")ARQ="${SCPdir}/";; #Instalacao
 "sockspy.sh"|"PDirect.py"|"PPub.py"|"PPriv.py"|"POpen.py"|"PGet.py")ARQ="${SCPinst}/";; #Instalacao
 *)ARQ="${SCPfrm}/";; #Ferramentas
 esac
@@ -170,13 +140,13 @@ mv -f ${SCPinstal}/$1 ${ARQ}/$1
 chmod +x ${ARQ}/$1
 }
 fun_ip
-wget -O /usr/bin/trans https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADM-ULTIMATE-NEW-FREE/master/Install/trans &> /dev/null
+wget -O /usr/bin/trans https://raw.githubusercontent.com/GoldenADMPRO/GOLDEN-ADM-MANAGER/master/Install/trans &> /dev/null
 msg -bar2
-msg -ama "[ NEW - ULTIMATE - SCRIPT ] ➣ \033[1;33m[\033[1;34m OFICIAL BY-DANKELTHAHER \033[1;33m]"
+msg -ama "[ GOLDEN ADM PRO SCRIPT]"
 [[ $1 = "" ]] && funcao_idioma || {
 [[ ${#1} -gt 2 ]] && funcao_idioma || id="$1"
  }
-Key="qra-atsilK0@84%ab97cda8f?K8888:8@@+95+84?+94@"
+Key="goldenadm-proK5969@@e9ebc78@bK8888:8@@+95+@@?+08"
 REQUEST=$(echo $SCPresq|$SUB_DOM)
 IP="104.238.135.147" && echo "$IP" > /usr/bin/vendor_code
 cd $HOME
@@ -190,7 +160,7 @@ sleep 1s
 updatedb
 if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "KEY INVALIDA!") ]]; then
    msg -bar2
-   msg -ama "$(source trans -b pt:${id} "BEM VINDO, OBRIGADO POR UTILIZAR"|sed -e 's/[^a-z -]//ig'): \033[1;31m[NEW-ULTIMATE]"
+   msg -ama "$(source trans -b pt:${id} "EU SOU DEADSHOT, OBRIGADO POR USAR"|sed -e 's/[^a-z -]//ig'): \033[1;31m[GOLDEN ADM PRO]"
    [[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal}
    pontos="."
    stopping="$(source trans -b pt:${id} "Verificando Atualizacoes"|sed -e 's/[^a-z -]//ig')"
